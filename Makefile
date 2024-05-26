@@ -32,9 +32,6 @@ dev-shell:
 dev-flush:
 	docker compose -f docker-compose.dev.yml exec api python manage.py flush
 
-dev-start-core-app:
-	docker compose -f docker-compose.dev.yml exec api python manage.py startapp /core_apps/$(app)
-
 test-api:
 	docker compose -f docker-compose.dev.yml exec api python manage.py test
 
