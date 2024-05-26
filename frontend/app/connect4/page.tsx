@@ -1,5 +1,5 @@
+'use client'
 import React, { useState } from 'react';
-import './Connect4.css'; // Assuming you have some basic styles
 
 type Player = 'R' | 'Y' | null;
 
@@ -53,15 +53,15 @@ const Connect4: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>Connect 4</h1>
-      {winner && <h2>Player {winner} wins!</h2>}
-      <div className="board">
+    <div className="flex flex-col items-center font-mono text-neon-green bg-black min-h-screen">
+      <h1 className="text-4xl mb-5 p-5 text-red-500 rounded-xl undelin">Connect 4 - Warfighter</h1>
+      {winner && <h2 className="text-3xl mb-5 text-neon-yellow neon-glow">Player {winner} wins!</h2>}
+      <div className="connect_4_board">
         {board.map((row, rowIndex) => (
           <div key={rowIndex} className="row">
             {row.map((cell, colIndex) => (
               <div key={colIndex} className="cell" onClick={() => handleClick(colIndex)}>
-                {cell && <div className={`piece ${cell}`}></div>}
+                {cell && <div className={`piece ${cell === 'R' ? 'R' : 'Y'}`}></div>}
               </div>
             ))}
           </div>
@@ -70,5 +70,4 @@ const Connect4: React.FC = () => {
     </div>
   );
 };
-
 export default Connect4;
