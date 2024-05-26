@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: .docker/dev/Dockerfile
+    image: warfighter-dev-api
+    command: .docker/dev/start.sh
+    volumes:
+      - ./api:/api
+    env_file:
+      - ./.envs/.dev
+    ports:
+      - "8000:8000"
+    networks:
+      - warfighter-network
+    depends_on:
+      - warfighter-db
+
+  web:
+    build:
+      context: ./frontend
+      dockerfile: .docker/dev/Dockerfile
+    image: warfighter-dev-web
+    command: .docker/dev/start.sh
+    volumes:
+      - ./frontend:/web
+    env_file:
+      - ./.envs/.dev
+    ports:
+      - "3000:3000"
+    networks:
+      - warfighter-network
+    depends_on:
+      - api
+
+  warfighter-db:
+    image: postgres:latest
+    volumes:
+      - warfighter_postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .envs/.dev
+    networks:
+      - warfighter-network
+
+  redis:
+    image: redis:latest
+    networks:
+      - warfighter-network
+
+  
+
+networks:
+  warfighter-network:
+    driver: bridge
+
+volumes:
+  warfighter_postgres_data:

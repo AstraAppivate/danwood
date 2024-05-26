@@ -54,7 +54,7 @@ const Connect4: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center font-mono text-neon-green bg-black min-h-screen">
-      <h1 className="text-4xl mb-5 p-5 text-red-500 rounded-xl undelin">Connect 4 - Warfighter</h1>
+      <h1 className="text-4xl mb-5 p-5 text-red-500 rounded-xl underline">Connect 4 - Warfighter</h1>
       {winner && <h2 className="text-3xl mb-5 text-neon-yellow neon-glow">Player {winner} wins!</h2>}
       <div className="connect_4_board">
         {board.map((row, rowIndex) => (
