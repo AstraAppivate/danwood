@@ -44,6 +44,11 @@ services:
     networks:
       - warfighter-network
 
+  redis:
+    image: redis:latest
+    networks:
+      - warfighter-network
+
 networks:
   warfighter-network:
     driver: bridge
