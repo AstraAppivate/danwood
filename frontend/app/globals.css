@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-pink: #ff6ec7;
+  --neon-blue: #4d4dff;
+  --neon-green: #39ff14;
+  --neon-yellow: #ccff00;
+  --neon-orange: #ff4500;
+  --neon-purple: #9400d3;
+  --neon-red: #ff073a;
+  --neon-cyan: #00ffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer utilities {
+  .neon-glow {
+    text-shadow: 0 0 5px var(--neon-red), 0 0 10px var(--neon-green), 0 0 20px var(--neon-green), 0 0 40px var(--neon-blue);
+    box-shadow: 0 0 5px var(--neon-red), 0 0 10px var(--neon-green), 0 0 20px var(--neon-blue), 0 0 40px var(--neon-green);
+  }
+}
+
+.game {
+  @apply flex flex-col items-center font-mono;
+}
+
+.game-board {
+  @apply mb-5;
+}
+
+.square {
+  @apply sm:w-52 sm:h-52 bg-black border-4 sm:text-8xl text-7xl font-bold cursor-pointer outline-none w-32 h-32 shadow m-1 rounded hover:text-9xl hover:bg-gray-800 transition-all duration-300 ease-in-out;
+  color: var(--neon-green); /* Neon text color for the squares */
+  border-color: var(--neon-green); /* Neon border color */
+}
+
+.square-won {
+  @apply sm:w-52 sm:h-52 bg-green-500 border-4 text-8xl font-bold cursor-pointer outline-none w-32 h-32 shadow m-1 rounded hover:text-9xl hover:bg-gray-800 transition-all duration-300 ease-in-out;
+  color: var(--neon-green); /* Neon text color for the squares */
+  border-color: var(--neon-green); /* Neon border color */
+}
+
+.square:focus {
+  @apply bg-gray-900; 
+  color: var(--neon-green);
+}
+
+.status {
+  @apply mb-8 text-xl font-bold ;
+
+}
+
+.square:focus {
+  @apply bg-gray-700;
+}
+
+.board-row {
+  @apply flex;
+}
+
+
+.game-info {
+  @apply m-5;
+}
+
+.game-info ol {
+  @apply gap-1 m-4;
+}
+
+.game-info ol li {
+  @apply mb-1;
+}
+
+.game-info button {
+  @apply text-xl bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded cursor-pointer;
+}
