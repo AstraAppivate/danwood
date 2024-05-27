@@ -10,7 +10,7 @@ class Connect4Session(BaseModel):
     # 0 represents an empty space, 1 represents a red piece, and 2 represents a yellow piece.
     board = models.TextField(default='[["", "", "", "", "", "", ""], ... ]')  # 6x7 grid
     # The current player's turn.
-    current_player = models.CharField(max_startlength=1, default='R')
+    current_colour = models.CharField(max_startlength=1, default='R')
     # The winner of the game.
     winner = models.IntegerField()
     # The number of moves that have been made in the game.
