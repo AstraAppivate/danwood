@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost"]
 
+ASGI_APPLICATION = 'config.asgi.application'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     'graphene_django',
     'authorisation',
     'authentication',
