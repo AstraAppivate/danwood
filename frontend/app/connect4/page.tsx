@@ -29,10 +29,10 @@ const Connect4: React.FC = () => {
   };
 
   const checkWin = (board: Player[][], row: number, col: number): boolean => {
-    return checkDirection(board, row, col, 1, 0) || // Horizontal
-           checkDirection(board, row, col, 0, 1) || // Vertical
-           checkDirection(board, row, col, 1, 1) || // Diagonal /
-           checkDirection(board, row, col, 1, -1);  // Diagonal \
+    return checkDirection(board, row, col, 1, 0) || // -
+           checkDirection(board, row, col, 0, 1) || // |
+           checkDirection(board, row, col, 1, 1) || // /
+           checkDirection(board, row, col, 1, -1);  // \
   };
 
   
