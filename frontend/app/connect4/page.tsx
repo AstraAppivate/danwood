@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Colour } from '../utils/CheckDirection';
 import { checkDirection } from '../utils/CheckDirection';
 
-// Component for each cell in the Connect4 board
 const Cell: React.FC<{ cell: Colour | null; onClick: () => void }> = ({ cell, onClick }) => (
   <div className="cell" onClick={onClick}>
     {cell && <div className={`piece ${cell === 'R' ? 'R' : 'Y'}`}></div>}
