@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Header } from '../../components/Header';
 import { Login } from '../../components/login';
 import { Board } from '../../components/Board';
-import { calculateWinner } from '../../components/CalculateWinner';
+import { calculateWinner } from '../utils/CalculateWinner';
 
 export default function Game() {
   const [history, setHistory] = useState<(string | null)[][]>([Array(9).fill(null)]); // starts 9 empty squares

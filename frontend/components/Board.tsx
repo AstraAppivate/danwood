@@ -1,6 +1,6 @@
 
 import { Square } from './Square';
-import { calculateWinner } from './CalculateWinner';
+import { calculateWinner } from '../app/utils/CalculateWinner';
 type BoardProps = {
     squares: (string | null)[];
     onClick: (i: number) => void;
