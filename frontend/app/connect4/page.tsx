@@ -1,41 +1,60 @@
 'use client'
 import React, { useState } from 'react';
-import { Player } from '../utils/CheckDirection';
+import { Colour } from '../utils/CheckDirection';
 import { checkDirection } from '../utils/CheckDirection';
 
+// Component for each cell in the Connect4 board
+const Cell: React.FC<{ cell: Colour | null; onClick: () => void }> = ({ cell, onClick }) => (
+  <div className="cell" onClick={onClick}>
+    {cell && <div className={`piece ${cell === 'R' ? 'R' : 'Y'}`}></div>}
+  </div>
+);
 const Connect4: React.FC = () => {
   const rows = 6;
   const cols = 7;
-  const [board, setBoard] = useState<Player[][]>(Array.from({ length: rows }, () => Array(cols).fill(null)));
-  const [currentPlayer, setCurrentPlayer] = useState<Player>('R');
-  const [winner, setWinner] = useState<Player | null>(null);
-
-  const handleClick = (col: number) => {
-    if (winner || board[0][col] !== null) return; // No more moves if game is won or column is full
-
-    const newBoard = board.map(row => row.slice());
+  
+  const [board, setBoard] = useState<Colour[][]>(Array.from({ length: rows }, () => Array(cols).fill(null)));
+  const [currentPlayer, setCurrentPlayer] = useState<Colour>('R');
+  const [winner, setWinner] = useState<Colour | null>(null);
+  
+  const isColumnFull = (col: number) => board[0][col] !== null;
+  
+  const cloneBoard = (board: Colour[][]) => board.map(row => row.slice());
+  
+  const getAvailableRow = (board: Colour[][], col: number) => {
     for (let row = rows - 1; row >= 0; row--) {
-      if (newBoard[row][col] === null) {
-        newBoard[row][col] = currentPlayer;
-        setBoard(newBoard);
-        if (checkWin(newBoard, row, col)) {
-          setWinner(currentPlayer);
-        } else {
-          setCurrentPlayer(currentPlayer === 'R' ? 'Y' : 'R');
-        }
-        break;
+      if (board[row][col] === null) {
+        return row;
       }
     }
+    return -1; // col is full
   };
 
-  const checkWin = (board: Player[][], row: number, col: number): boolean => {
+  const handleClick = (col: number) => {
+    if (winner || isColumnFull(col)) return; // returns if there is a winner or the column is full
+  
+    const newBoard = cloneBoard(board);
+    const row = getAvailableRow(newBoard, col);
+    if (row === -1) return;
+  
+    newBoard[row][col] = currentPlayer;
+    setBoard(newBoard);
+  
+    if (checkWin(newBoard, row, col)) {
+      setWinner(currentPlayer);
+    } else {
+      togglePlayer();
+    }
+  };
+  
+  const togglePlayer = () => setCurrentPlayer(currentPlayer === 'R' ? 'Y' : 'R');
+
+  const checkWin = (board: Colour[][], row: number, col: number): boolean => {
     return checkDirection(board, row, col, 1, 0) || // -
            checkDirection(board, row, col, 0, 1) || // |
            checkDirection(board, row, col, 1, 1) || // /
            checkDirection(board, row, col, 1, -1);  // \
   };
-
-  
 
   return (
     <div className="flex flex-col items-center font-mono text-neon-green min-h-screen">
@@ -45,9 +64,7 @@ const Connect4: React.FC = () => {
         {board.map((row, rowIndex) => (
           <div key={rowIndex} className="row">
             {row.map((cell, colIndex) => (
-              <div key={colIndex} className="cell" onClick={() => handleClick(colIndex)}>
-                {cell && <div className={`piece ${cell === 'R' ? 'R' : 'Y'}`}></div>}
-              </div>
+              <Cell key={colIndex} cell={cell} onClick={() => handleClick(colIndex)} />
             ))}
           </div>
         ))}
@@ -55,4 +72,6 @@ const Connect4: React.FC = () => {
     </div>
   );
 };
+
 export default Connect4;
+
