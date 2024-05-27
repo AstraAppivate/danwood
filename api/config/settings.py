@@ -31,13 +31,13 @@ ALLOWED_HOSTS = ["localhost"]
 ASGI_APPLICATION = 'config.asgi.application'
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'channels',
     'graphene_django',
     'authorisation',
     'authentication',
