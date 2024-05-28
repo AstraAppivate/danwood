@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Connect4Session, NoughtsAndCrossesSession
 
-# Register your models here.
+admin.site.register(Connect4Session)
+admin.site.register(NoughtsAndCrossesSession)

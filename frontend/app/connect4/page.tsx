@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import { Colour } from '../utils/CheckDirection';
 import { checkDirection } from '../utils/CheckDirection';
 
-const Cell: React.FC<{ cell: Colour | null; onClick: () => void }> = ({ cell, onClick }) => (
+const Cell: React.FC<{ col:any, cell: Colour | null; onClick: () => void }> = ({ col,cell, onClick }) => (
   <div className="cell" onClick={onClick}>
-    {cell && <div className={`piece ${cell === 'R' ? 'R' : 'Y'}`}></div>}
+    {cell && <div className={`piece ${cell === 'R' ? 'R' : 'Y'}`}><div className='text-white'>{cell}{col}</div></div>}
   </div>
 );
 const Connect4: React.FC = () => {
@@ -33,6 +33,7 @@ const Connect4: React.FC = () => {
     if (winner || isColumnFull(col)) return; // returns if there is a winner or the column is full
   
     const newBoard = cloneBoard(board);
+    console.log('newBoard', newBoard)
     const row = getAvailableRow(newBoard, col);
     if (row === -1) return;
   
@@ -58,12 +59,12 @@ const Connect4: React.FC = () => {
   return (
     <div className="flex flex-col items-center font-mono text-neon-green min-h-screen">
       <h1 className="text-4xl mb-5 p-5 text-red-500 rounded-xl underline">Connect 4 - Warfighter</h1>
-      {winner && <h2 className="text-3xl mb-5 text-neon-yellow neon-glow">Player {winner} wins!</h2>}
+      {winner && <h2 className="text-3xl p-5 mb-1 text-red-600 rounded-xl">{winner} wins!</h2>}
       <div className="connect_4_board">
         {board.map((row, rowIndex) => (
           <div key={rowIndex} className="row">
             {row.map((cell, colIndex) => (
-              <Cell key={colIndex} cell={cell} onClick={() => handleClick(colIndex)} />
+              <Cell key={colIndex} col={colIndex} cell={cell} onClick={() => handleClick(colIndex)} />
             ))}
           </div>
         ))}

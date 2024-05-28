@@ -26,18 +26,18 @@ const checkDirection = (
 
           count++; // Increment the counter
           if (count === 4) {
-            // If we have found 4 consecutive pieces, return true
+            
             return true;
           }
         } else {
-          count = 0; // Reset the counter if the piece is different
+          count = 0;
         }
       } else {
-        count = 0; // Reset the counter if out of bounds
+        count = 0; 
       }
     }
   
-    // Return false if no 4 consecutive pieces are found
+    // false if no 4 consecutive pieces are found
     return false;
   };
 
