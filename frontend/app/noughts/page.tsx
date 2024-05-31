@@ -1,7 +1,5 @@
 'use client';
 import { useState } from 'react';
-import { Header } from '../../components/Header';
-import { Login } from '../../components/login';
 import { Board } from '../../components/Board';
 import { calculateWinner } from '../utils/CalculateWinner';
 
@@ -34,14 +32,13 @@ export default function Game() {
 
   return (
     <div className="game">
-      <Header />
+
       <div className="game-board">
         <Board squares={currentSquares} onClick={handleClick} winningLine={winnerInfo.line} />
       </div>
       <div className="game-info">
         <ol>{moves}</ol>
       </div>
-      <Login />
     </div>
   );
 }

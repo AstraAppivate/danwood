@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-
+import { Header } from '../components/Header';
 import "./globals.css";
-
-
 
 export const metadata: Metadata = {
   title: "Warfighter - Noughts and Crosses",
@@ -17,10 +15,10 @@ export default function RootLayout({
   return (
      
     <html lang="en">
-   
-          <body className="bg-black">{children}</body>
- 
-   
+          <body className="bg-black">
+            <Header />
+            {children}
+          </body>
     </html>
   );
 }

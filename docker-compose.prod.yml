@@ -6,11 +6,11 @@ services:
       context: ./api
       dockerfile: .docker/dev/Dockerfile
     image: warfighter-dev-api
-    command: .docker/prod/start.sh
+    command: .docker/dev/start.sh
     volumes:
       - ./api:/api
     env_file:
-      - ./.envs/.prod
+      - ./.envs/.dev
     ports:
       - "8000:8000"
     networks:
@@ -23,11 +23,11 @@ services:
       context: ./frontend
       dockerfile: .docker/dev/Dockerfile
     image: warfighter-dev-web
-    command: .docker/prod/start.sh
+    command: .docker/dev/start.sh
     volumes:
       - ./frontend:/web
     env_file:
-      - ./.envs/.prod
+      - ./.envs/.dev
     ports:
       - "3000:3000"
     networks:
@@ -48,8 +48,6 @@ services:
     image: redis:latest
     networks:
       - warfighter-network
-
-  
 
 networks:
   warfighter-network:

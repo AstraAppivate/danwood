@@ -5,6 +5,7 @@ services:
     build:
       context: ./api
       dockerfile: .docker/dev/Dockerfile
+    container_name: warfighter-dev-api
     image: warfighter-dev-api
     command: .docker/dev/start.sh
     volumes:
@@ -22,6 +23,7 @@ services:
     build:
       context: ./frontend
       dockerfile: .docker/dev/Dockerfile
+    container_name: warfighter-dev-web
     image: warfighter-dev-web
     command: .docker/dev/start.sh
     volumes:
@@ -53,6 +55,7 @@ services:
 
 networks:
   warfighter-network:
+    name: warfighter-network
     driver: bridge
 
 volumes:

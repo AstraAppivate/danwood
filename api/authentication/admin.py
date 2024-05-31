@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Warfighter
+
+admin.site.register(Warfighter)

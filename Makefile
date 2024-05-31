@@ -7,13 +7,16 @@ dev-build-docker:
 dev-up-docker:
 	docker compose -f docker-compose.dev.yml up
 
-dev-down-docker:
+dev-down:
 	docker compose -f docker-compose.dev.yml down
 
 dev: dev-build-docker dev-up-docker
 
-dev-down: dev-down-docker
+dev-log:
+	docker compose -f docker-compose.dev.yml logs -f 
 
+dev-api-restart:
+	docker compose -f docker-compose.dev.yml restart api
 exec-api:
 	docker compose -f docker-compose.dev.yml exec api bash
 

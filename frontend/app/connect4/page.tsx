@@ -33,7 +33,7 @@ const Connect4: React.FC = () => {
     if (winner || isColumnFull(col)) return; // returns if there is a winner or the column is full
   
     const newBoard = cloneBoard(board);
-    console.log('newBoard', newBoard)
+    // console.log('newBoard', newBoard)
     const row = getAvailableRow(newBoard, col);
     if (row === -1) return;
   
@@ -49,12 +49,23 @@ const Connect4: React.FC = () => {
   
   const togglePlayer = () => setCurrentPlayer(currentPlayer === 'R' ? 'Y' : 'R');
 
+  /*
+  [
+    [0,0], [0,1], [0,2], [0,3], [0,4], [0,5], [0,6],
+    [1,0], [1,1], [1,2], [1,3], [1,4], [1,5], [1,6],
+    [2,0], [2,1], [2,2], [2,3], [2,4], [2,5], [2,6],
+    [3,0], [3,1], [3,2], [3,3], [3,4], [3,5], [3,6],
+    [4,0], [4,1], [4,2], [4,3], [4,4], [4,5], [4,6],
+    [5,0], [5,1], [5,2], [5,3], [5,4], [5,5], [5,6]
+  ]
+*/
   const checkWin = (board: Colour[][], row: number, col: number): boolean => {
     return checkDirection(board, row, col, 1, 0) || // -
            checkDirection(board, row, col, 0, 1) || // |
            checkDirection(board, row, col, 1, 1) || // /
            checkDirection(board, row, col, 1, -1);  // \
   };
+  
 
   return (
     <div className="flex flex-col items-center font-mono text-neon-green min-h-screen">

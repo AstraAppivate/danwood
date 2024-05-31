@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'graphene_django',
     'authorisation',
     'authentication',
+    'core.games',
  
 ]
 
@@ -101,6 +102,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+
+AUTH_USER_MODEL = 'authentication.Warfighter'
 
 LANGUAGE_CODE = 'en-us'
 
