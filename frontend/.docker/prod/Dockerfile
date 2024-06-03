@@ -1,6 +1,6 @@
 FROM node:latest
 
-WORKDIR /web
+WORKDIR /frontend
 
 COPY . .
 

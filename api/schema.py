@@ -7,6 +7,6 @@ class Query(graphene.ObjectType):
         if info.context.user.is_anonymous:
             raise Exception('Your not logged in, but hello!')
         
-        return f"Hello! {info.context.user}"
+        return f"Hello! {info.context.user.password}"
 
 schema = graphene.Schema(query=Query)

@@ -38,5 +38,8 @@ dev-flush:
 test-api:
 	docker compose -f docker-compose.dev.yml exec api python manage.py test
 
-squash-realm-migrations:
-	docker compose -f docker-compose.dev.yml exec api python manage.py squashmigrations realms 0001 0003
+prod-build:
+	docker compose -f docker-compose.prod.yml build
+
+prod-up:
+	docker compose -f docker-compose.prod.yml up 

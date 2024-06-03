@@ -4,54 +4,45 @@ services:
   api:
     build:
       context: ./api
-      dockerfile: .docker/dev/Dockerfile
-    image: warfighter-dev-api
-    command: .docker/dev/start.sh
+      dockerfile: .docker/prod/Dockerfile
+    image: dan-warfighter-prod-api
+    container_name: dan-warfighter-prod-api
+    command: .docker/prod/start.sh
     volumes:
       - ./api:/api
     env_file:
       - ./.envs/.dev
     ports:
       - "8000:8000"
-    networks:
-      - warfighter-network
     depends_on:
       - warfighter-db
 
-  web:
+  frontend:
     build:
       context: ./frontend
-      dockerfile: .docker/dev/Dockerfile
-    image: warfighter-dev-web
-    command: .docker/dev/start.sh
+      dockerfile: .docker/prod/Dockerfile
+    image: dan-warfighter-prod-frontend
+    container_name: dan-warfighter-prod-frontend
+    command: .docker/prod/start.sh
     volumes:
-      - ./frontend:/web
+      - ./frontend:/frontend
     env_file:
-      - ./.envs/.dev
+      - ./.envs/.prod
     ports:
       - "3000:3000"
-    networks:
-      - warfighter-network
     depends_on:
       - api
 
   warfighter-db:
     image: postgres:latest
     volumes:
-      - warfighter_postgres_data:/var/lib/postgresql/data
+      - warfighter_prod_postgres_data:/var/lib/postgresql/data
     env_file:
-      - .envs/.dev
-    networks:
-      - warfighter-network
+      - .envs/.prod
 
   redis:
     image: redis:latest
-    networks:
-      - warfighter-network
 
-networks:
-  warfighter-network:
-    driver: bridge
 
 volumes:
-  warfighter_postgres_data:
+  warfighter_prod_postgres_data:
