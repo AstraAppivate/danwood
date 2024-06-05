@@ -12,8 +12,7 @@ services:
       - ./.envs/.dev
     depends_on:
       - warfighter-db
-    networks:
-      - caeser-network
+
 
   frontend:
     build:
@@ -31,8 +30,6 @@ services:
       - ./.envs/.prod
     depends_on:
       - api
-    networks:
-      - caeser-network
 
   warfighter-db:
     image: postgres:latest
@@ -40,13 +37,10 @@ services:
       - warfighter_prod_postgres_data:/var/lib/postgresql/data
     env_file:
       - .envs/.prod
-    networks:
-      - caeser-network
 
   redis:
     image: redis:latest
-    networks:
-      - caeser-network
+
   
   nginx:
     build: ./nginx
@@ -54,15 +48,10 @@ services:
       - "8080:8080"
     depends_on:
       - frontend
-    networks:
-      - caeser-network
+
     volumes:
       - ./nginx/logs:/var/log/nginx
     
-
-networks:
-  caeser-network:
-    external: true
 
 volumes:
   warfighter_prod_postgres_data:
