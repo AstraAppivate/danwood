@@ -5,15 +5,15 @@ import Link from 'next/link'
 export function Header() {
   
   return (
-    <header className="z-100 pb-6 pt-2 text-center font-bold text-red-500">
+    <header className="z-100 pb-2 pt-2 text-center font-bold text-red-500">
      
-        <nav className="relative z-50 flex justify-center">
-            <Link href="/" aria-label="Home" className='rotating'>
-            </Link>
-          <p className="text mt-2 underline">Noughts And Crosses - DevSecOps warfighter </p> 
+        <nav className="relative z-50 flex justify-center border rounded-xl border-black m-2 p-2">
+          <Link href="/" aria-label="Home" className='rotating'></Link>
+          <Link href="/" aria-label="Game" className='text text-black border border-black p-2 rounded m-2'>Home</Link>
+          <Link href="/connect4" aria-label="Game" className='text text-black border border-black p-2 rounded m-2'>Connect 4</Link>
+          <Link href="/noughts" aria-label="Game" className='text text-black border border-black p-2 rounded m-2'>Noughts</Link>
         </nav>
-          <Link className="text-xs mt-2 " href="github.com/danwood1992" aria-label="github"> By Dan Wood</Link>
-   
+  
     </header>
   )
 }

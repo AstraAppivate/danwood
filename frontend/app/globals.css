@@ -37,13 +37,13 @@
 }
 
 .square {
-  @apply sm:w-52 sm:h-52 bg-black border-4 sm:text-8xl text-7xl font-bold cursor-pointer outline-none w-32 h-32 shadow m-1 rounded hover:text-9xl hover:bg-gray-800 transition-all duration-300 ease-in-out;
+  @apply sm:w-52 sm:h-52 bg-black border-2 sm:text-8xl text-7xl font-bold cursor-pointer outline-none w-32 h-32 shadow m-1 rounded hover:text-9xl hover:bg-gray-800 transition-all duration-300 ease-in-out;
   color: var(--neon-green); /* Neon text color for the squares */
   border-color: var(--neon-green); /* Neon border color */
 }
 
 .square-won {
-  @apply sm:w-52 sm:h-52 bg-green-500 border-4 text-8xl font-bold cursor-pointer outline-none w-32 h-32 shadow m-1 rounded hover:text-9xl hover:bg-gray-800 transition-all duration-300 ease-in-out;
+  @apply sm:w-52 sm:h-52 bg-green-500 border-2 text-8xl font-bold cursor-pointer outline-none w-32 h-32 shadow m-1 rounded hover:text-9xl hover:bg-gray-800 transition-all duration-300 ease-in-out;
   color: var(--neon-green); /* Neon text color for the squares */
   border-color: var(--neon-green); /* Neon border color */
 }
@@ -66,7 +66,6 @@
   @apply flex;
 }
 
-
 .game-info {
   @apply m-5;
 }
@@ -87,11 +86,51 @@
 /* Connect 4 Specific Styles */
 .connect_4_board {
   @apply grid;
-  grid-template-rows: repeat(6, 80px);
+  grid-template-rows: repeat(6, 1fr);
   gap: 10px;
   justify-content: center;
-  margin: 30px auto;
+  margin: 10px auto;
+  background-color: #223bde;
+  padding: 20px;
+  border-radius: 40px;
 }
+
+.custom-3d-board {
+  perspective: 500px;
+  background: linear-gradient(to top, #1e3a8a, #3b82f8);
+  
+  transform: rotateX(30deg);
+  transform-origin: bottom;
+  
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+
+  padding: 20px;
+  border: 1px solid black;
+  height: 50px; 
+  width:auto;
+  margin-right: 0px;
+}
+
+.table {
+  perspective: 500px;
+  background: linear-gradient(to top, #ae4913, #613e14);
+  
+  transform: rotateX(30deg);
+  transform-origin: bottom;
+  
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+
+  padding: 20px;
+
+  height: 400px; 
+  width: 100%;
+  margin-right: 0px;
+  border-radius: 40px;
+    /* Adjusted clip-path for a 3D trapezoidal effect */
+  clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
+
+}
+
 
 .row {
   @apply grid;
@@ -103,7 +142,7 @@
   @apply flex items-center justify-center cursor-pointer;
   width: 80px;
   height: 80px;
-  background-color: #000;
+  background-color: #fff;
   border: 2px solid var(--neon-green);
   border-radius: 50%;
   transition: transform 0.3s ease-in-out;

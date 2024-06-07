@@ -45,4 +45,4 @@ prod-up:
 	docker-compose -f docker-compose.prod.yml up 
 
 prod-down:
-	docker compose -f docker-compose.prod.yml down
+	docker compose -f docker-compose.prod.yml

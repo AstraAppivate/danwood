@@ -21,8 +21,8 @@ type BoardProps = {
   
     return (
       <div>
-        <div className='rounded-md p-4 m-4'>
-          <div className="status">{status}</div>
+        <div className='rounded-md p-4'>
+          <div className="status text-center border p-6 border-black rounded-xxl">{status}</div>
           <div className="board-row">
             {renderSquare(0)}{renderSquare(1)}{renderSquare(2)}
           </div>
