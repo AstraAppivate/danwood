@@ -150,14 +150,16 @@
 
 @keyframes fadeInTopAnimation {
   from {
-      opacity: 0.3;
-      transform: translateY(-300px);
+    opacity: 0.3;
+    transform: translateY(-100vh); /* Start from above the viewport */
   }
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0); /* End at the piece's final resting place */
   }
 }
+
+
 
 /* Media query for mobile devices */
 @media (max-width: 480px) {
