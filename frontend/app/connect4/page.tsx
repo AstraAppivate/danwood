@@ -80,8 +80,8 @@ const Connect4: React.FC = () => {
         ))}
       <div className="border border-black p-20 bg-blue-400 custom-3d-board mb-[-40px]"></div>
       </div>
-      <div className="mt-[-90px] table z-[-100]"></div>
-
+      <div className="mt-[-180px] table z-[-100]"></div>
+     
     </div>
   );
 };
