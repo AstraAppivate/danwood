@@ -6,7 +6,7 @@
   --neon-pink: #ff6ec7;
   --neon-blue: #4d4dff;
   --neon-green: #39ff14;
-  --neon-yellow: #ccff00;
+  --neon-yellow: #e9fe00;
   --neon-orange: #ff4500;
   --neon-purple: #9400d3;
   --neon-red: #ff073a;
@@ -93,17 +93,15 @@
   background-color: #223bde;
   padding: 20px;
   border-radius: 40px;
+  
 }
 
 .custom-3d-board {
   perspective: 500px;
   background: linear-gradient(to top, #1e3a8a, #3b82f8);
-  
   transform: rotateX(30deg);
   transform-origin: bottom;
-  
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
-
   padding: 20px;
   border: 1px solid black;
   height: 50px; 
@@ -118,13 +116,11 @@
   transform-origin: bottom;
   box-shadow: 0 30px 40px rgba(0, 0, 0, 0.5);
   padding: 20px;
-  height: 400px; 
+  height: 400px;
   width: 100%;
   margin-right: 0px;
   border-radius: 40px;
-    /* Adjusted clip-path for a 3D trapezoidal effect */
   clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
-
 }
 
 
@@ -135,17 +131,12 @@
 }
 
 .cell {
-  @apply flex items-center justify-center cursor-pointer;
+  @apply flex items-center justify-center;
   width: 80px;
   height: 80px;
   background-color: #fff;
   border: 2px solid var(--neon-green);
   border-radius: 50%;
-  transition: transform 0.3s ease-in-out;
-}
-
-.cell:hover {
-  transform: scale(1.1);
 }
 
 .piece {
@@ -154,10 +145,70 @@
   border-radius: 50%;
 }
 
+/* Media query for mobile devices */
+@media (max-width: 480px) {
+  .connect_4_board {
+    grid-template-rows: repeat(6, 1fr);
+    gap: 5px;
+    justify-content: center;
+    margin: 10px auto;
+    background-color: #223bde;
+    padding: 16px;
+    border-radius: 40px;
+  }
+  .custom-3d-board {
+    perspective: 500px;
+    background: linear-gradient(to top, #1e3a8a, #3b82f8);
+    transform: rotateX(30deg);
+    transform-origin: bottom;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border: 1px solid black;
+    height: 30px; 
+    width:auto;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  .table {
+    perspective: 500px;
+    background: linear-gradient(to top, #ae4913, #613e14);
+    transform: rotateX(30deg);
+    transform-origin: bottom;
+    box-shadow: 0 30px 40px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    height: 200px;
+    width: 100%;
+    margin-right: 0px;
+    border-radius: 40px;
+    clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
+  }
+  .row {
+    grid-template-columns: repeat(7, 45px);
+    gap: 5px;
+  }
+  .cell {
+    width: 45px;
+    height: 45px;
+  }
+  .piece {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
 .piece.R {
   background-color: var(--neon-red);
 }
 
 .piece.Y {
-  background-color: var(--neon-green);
+  background-color: var(--neon-yellow);
+}
+
+.element-red {
+  cursor: url('https://raw.githubusercontent.com/danwood1992/assets/ac826aa02ca97915e3643e905a17ef250ec6d498/redpiece.svg'), auto;
+}
+
+.element-yellow {
+  cursor: url('https://raw.githubusercontent.com/danwood1992/assets/1e4da1cb79cba1ff6f1f54a86301b347d03356d5/yellowpiece.svg">'), auto;
 }

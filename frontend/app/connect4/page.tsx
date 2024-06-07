@@ -68,7 +68,7 @@ const Connect4: React.FC = () => {
   
 
   return (
-    <div className="flex flex-col items-center font-mono text-neon-green min-h-screen">
+    <div className="flex flex-col items-center font-mono text-neon-green min-h-screen element-red">
       {winner && <h2 className="text-3xl p-5  text-red-600 rounded-xl">{winner} wins!</h2>}
       <div className="connect_4_board">
         {board.map((row, rowIndex) => (
@@ -78,10 +78,9 @@ const Connect4: React.FC = () => {
             ))}
           </div>
         ))}
-      <div className="border border-black p-20 bg-blue-400 custom-3d-board mb-[-40px]"></div>
+      <div className="border border-black p-20 bg-blue-400 custom-3d-board mb-[-40px] rounded"></div>
       </div>
-      <div className="mt-[-180px] table z-[-100]"></div>
-     
+      <div className="sm:mt-[-230px] mt-[-110px] table z-[-100]"></div>
     </div>
   );
 };
