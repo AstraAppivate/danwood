@@ -8,10 +8,9 @@ const checkDirection = (
     colDir: number
   ): boolean => {
     const colour = board[row][col]; // Get the colour at the current position
-    console.log('now checking directions and going in direction ( rowDir, colDir )', rowDir, colDir)
     console.log('we are checking for the colour', board[row][col] , 'because our current (position is', row, col, 'in the board')
     let count = 0; 
-    console.log("check direction function")
+
   
     // 7 positions in the given direction (-3 to +3)
     for (let i = -3; i <= 3; i++) {
@@ -39,8 +38,7 @@ const checkDirection = (
         count = 0; 
       }
     }
-  
-    // false if no 4 consecutive pieces are found
+
     return false;
   };
 
