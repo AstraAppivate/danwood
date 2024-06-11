@@ -10,9 +10,9 @@ export default function Home() {
       <div className='text-center min-h-screen border rounded p-6 m-2 border-black'>
     
         <div className='rounded p-6 m-2 border border-black'>
-          
-          <div className='border rounded border-black'>
             <h4>High scores</h4>
+          
+          <div className='border rounded border-black m-2'>
               <ul>
                 <p>Connect 4</p>
                 <li>Dan: </li>
@@ -20,8 +20,8 @@ export default function Home() {
               </ul>
           </div>
               
-          <div className='border rounded border-black'>
-            <h4>High scores</h4>
+          <div className='border rounded border-black m-2'>
+        
               <ul>
                 <p>Connect 4</p>
                 <li>Dan: </li>
